@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2uey5xgvmaa2"]
+
+[ext_resource type="Texture2D" uid="uid://bhwfjttwgt4n1" path="res://villagersNPC/leSpeech.png" id="1_djx2v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hn1sj"]
+radius = 17.72
+
+[node name="villager21" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hn1sj")
+
+[node name="LeSpeech" type="Sprite2D" parent="."]
+position = Vector2(47, -51)
+scale = Vector2(0.363532, 0.367456)
+texture = ExtResource("1_djx2v")
+offset = Vector2(0, 2)

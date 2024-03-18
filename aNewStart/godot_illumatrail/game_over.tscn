@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmdw0s5wjjdu3"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_2lmt4"]
+[ext_resource type="Texture2D" uid="uid://c66pf6uy3hg2y" path="res://royalty/gameOverImage.png" id="2_lao2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aomkj"]
+size = Vector2(23138.5, 15387.5)
+
+[node name="gameOver" type="Area2D"]
+script = ExtResource("1_2lmt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11.75, -16.75)
+shape = SubResource("RectangleShape2D_aomkj")
+
+[node name="GameOverImage" type="Sprite2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(17, 9)
+scale = Vector2(1.25428, 1.13191)
+texture = ExtResource("2_lao2i")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

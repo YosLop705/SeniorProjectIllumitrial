@@ -1,0 +1,118 @@
+[gd_scene load_steps=20 format=3 uid="uid://c2ko2d3n1x8sb"]
+
+[ext_resource type="Script" path="res://ent_real.gd" id="1_bq6tg"]
+[ext_resource type="Texture2D" uid="uid://c2x4m32f1ek7k" path="res://ents/long-1.png.png" id="2_bkcbo"]
+[ext_resource type="Texture2D" uid="uid://2fqqulo1p50e" path="res://ents/effects-29.png.png" id="2_e60dt"]
+[ext_resource type="Texture2D" uid="uid://ctbtbevsvwc50" path="res://ents/long-2.png.png" id="3_d0t3l"]
+[ext_resource type="Texture2D" uid="uid://bqpf146av2l62" path="res://ents/effects-30.png.png" id="3_lx5gy"]
+[ext_resource type="Texture2D" uid="uid://cwtih4dxvvqk3" path="res://ents/long-3.png.png" id="4_ekrhy"]
+[ext_resource type="Texture2D" uid="uid://obdsjij7h7hg" path="res://ents/effects-31.png.png" id="4_s1ypn"]
+[ext_resource type="Texture2D" uid="uid://cifpqjtbswso" path="res://ents/effects-32.png.png" id="5_3fv36"]
+[ext_resource type="Texture2D" uid="uid://dv013v04eh3tv" path="res://ents/long-4.png.png" id="5_usfts"]
+[ext_resource type="Texture2D" uid="uid://b4oe1vp1ime0s" path="res://ents/effects-33.png.png" id="6_ltp84"]
+[ext_resource type="Texture2D" uid="uid://cbmj1v4hk4xbx" path="res://ents/long-5.png.png" id="6_nvhgp"]
+[ext_resource type="Texture2D" uid="uid://8cgt0g1pc2sp" path="res://ents/long-6.png.png" id="7_jboiy"]
+[ext_resource type="Texture2D" uid="uid://dgukisro37016" path="res://ents/effects-34.png.png" id="7_rg3ca"]
+[ext_resource type="Texture2D" uid="uid://cborr3jqkmn43" path="res://ents/long-7.png.png" id="8_cj04e"]
+[ext_resource type="Texture2D" uid="uid://c106w6nye43cw" path="res://ents/effects-35.png.png" id="8_ilbtu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khghv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e60dt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lx5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s1ypn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3fv36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ltp84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rg3ca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ilbtu")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bkcbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d0t3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ekrhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_usfts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nvhgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jboiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cj04e")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ild78"]
+radius = 5.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tmik"]
+size = Vector2(25, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vowkw"]
+size = Vector2(25, 2)
+
+[node name="entReal" type="CharacterBody2D"]
+script = ExtResource("1_bq6tg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_khghv")
+animation = &"Attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ild78")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-30, 0)
+enabled = false
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(-18.5, 1)
+shape = SubResource("RectangleShape2D_3tmik")
+
+[node name="AttackDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetector"]
+position = Vector2(-18.5, 1)
+shape = SubResource("RectangleShape2D_vowkw")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="area_shape_entered" from="AttackDetector" to="." method="_on_attack_detector_area_shape_entered"]

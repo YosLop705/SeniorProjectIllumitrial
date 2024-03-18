@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://vrbcmpsqawi3"]
+
+[ext_resource type="Script" path="res://wall_drop.gd" id="1_opma0"]
+[ext_resource type="Texture2D" uid="uid://dn1vtpag2yps3" path="res://pillars-2.png.png" id="1_p4i6k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n30ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p4i6k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e173"]
+size = Vector2(20, 236)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5fle"]
+size = Vector2(20, 260)
+
+[node name="wallDrop" type="CharacterBody2D"]
+script = ExtResource("1_opma0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(98, -104)
+rotation = 1.60735
+scale = Vector2(0.300836, 0.292957)
+sprite_frames = SubResource("SpriteFrames_n30ef")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -108)
+shape = SubResource("RectangleShape2D_1e173")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 120)
+shape = SubResource("RectangleShape2D_k5fle")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

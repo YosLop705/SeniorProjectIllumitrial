@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dctg7kces2fwd"]
+
+[ext_resource type="Texture2D" uid="uid://cx3phrxt7qbwb" path="res://villagersNPC/crixSpeech.png" id="1_kjtc5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ciq6a"]
+radius = 19.4165
+
+[node name="villager20" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ciq6a")
+
+[node name="CrixSpeech" type="Sprite2D" parent="."]
+position = Vector2(46.1719, -64.8438)
+scale = Vector2(0.328922, 0.328438)
+texture = ExtResource("1_kjtc5")

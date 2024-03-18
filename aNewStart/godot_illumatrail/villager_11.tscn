@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://5dvkhj3u8712"]
+
+[ext_resource type="Script" path="res://villager11.gd" id="1_kh4l7"]
+[ext_resource type="Texture2D" uid="uid://cv6osgco8vmk6" path="res://villagersNPC/villager11/speech11-1.png.png" id="2_upcha"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkh38"]
+radius = 8.0
+height = 34.0
+
+[node name="villager11" type="Area2D"]
+script = ExtResource("1_kh4l7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_dkh38")
+
+[node name="Speech11-1_png" type="Sprite2D" parent="."]
+position = Vector2(45, -56)
+scale = Vector2(0.729512, 0.73375)
+texture = ExtResource("2_upcha")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

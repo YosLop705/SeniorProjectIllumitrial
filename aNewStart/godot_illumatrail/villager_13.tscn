@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dowo6lwugls6m"]
+
+[ext_resource type="Texture2D" uid="uid://du8mma47k6epd" path="res://villagersNPC/leafSpeach.png" id="1_ljh4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vw4wh"]
+radius = 20.8806
+
+[node name="villager13" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vw4wh")
+
+[node name="LeafSpeach" type="Sprite2D" parent="."]
+position = Vector2(64, -47)
+scale = Vector2(0.49898, 0.393849)
+texture = ExtResource("1_ljh4a")

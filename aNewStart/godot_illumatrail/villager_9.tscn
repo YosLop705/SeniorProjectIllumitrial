@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb1la8g2jakhc"]
+
+[ext_resource type="Texture2D" uid="uid://do4n8f82w2li6" path="res://villagersNPC/tailSpeach.png" id="1_x14pq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqnb7"]
+radius = 14.1421
+
+[node name="villager9" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gqnb7")
+
+[node name="TailSpeach" type="Sprite2D" parent="."]
+position = Vector2(49, -41)
+scale = Vector2(0.426501, 0.373512)
+texture = ExtResource("1_x14pq")

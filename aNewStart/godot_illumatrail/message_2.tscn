@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31k3ghn80phn"]
+
+[ext_resource type="Texture2D" uid="uid://bdroj80kvaomy" path="res://white/mes-2.png.png" id="1_actby"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ces41"]
+radius = 27.0
+height = 58.0
+
+[node name="message2" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ces41")
+
+[node name="Mes-2_png" type="Sprite2D" parent="."]
+position = Vector2(43, -44)
+scale = Vector2(0.311086, 0.317935)
+texture = ExtResource("1_actby")

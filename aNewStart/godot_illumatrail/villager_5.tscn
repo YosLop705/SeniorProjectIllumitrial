@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csdylwpt7tjor"]
+
+[ext_resource type="Texture2D" uid="uid://bnl7g07s5tt58" path="res://villagersNPC/speech5.png" id="1_bgu15"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fhqc"]
+radius = 21.0
+height = 42.0
+
+[node name="villager5" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6fhqc")
+
+[node name="Speech5" type="Sprite2D" parent="."]
+position = Vector2(41.625, -44.6563)
+scale = Vector2(0.638043, 0.554605)
+texture = ExtResource("1_bgu15")

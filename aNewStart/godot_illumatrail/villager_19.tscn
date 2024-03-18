@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dga4ft7m7cuvm"]
+
+[ext_resource type="Texture2D" uid="uid://dbpsd0p8pma17" path="res://villagersNPC/set3-6.png.png" id="1_uucs1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tdj3"]
+radius = 16.4012
+
+[node name="villager19" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0tdj3")
+
+[node name="Set3-6_png" type="Sprite2D" parent="."]
+position = Vector2(43, -55)
+scale = Vector2(0.376179, 0.354167)
+texture = ExtResource("1_uucs1")

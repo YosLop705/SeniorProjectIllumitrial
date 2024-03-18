@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy5rgdoc01r2l"]
+
+[ext_resource type="Script" path="res://wall_hold.gd" id="1_r0gpj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ythrv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr5dw"]
+size = Vector2(20, 360)
+
+[node name="wallHold" type="CharacterBody2D"]
+script = ExtResource("1_r0gpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ythrv")
+
+[node name="runpass" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="runpass"]
+position = Vector2(0, 170)
+shape = SubResource("RectangleShape2D_tr5dw")
+
+[connection signal="body_entered" from="runpass" to="." method="_on_runpass_body_entered"]

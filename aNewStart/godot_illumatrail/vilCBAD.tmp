@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://5dvkhj3u8712"]
+
+[ext_resource type="Script" path="res://villager_11.gd" id="1_liw4d"]
+[ext_resource type="Texture2D" uid="uid://dd3ffy4u686sh" path="res://villagersNPC/villager11/villagers-ezgif.com-crop (11)-0.png" id="1_nknwu"]
+[ext_resource type="Texture2D" uid="uid://dos6beipbyavg" path="res://villagersNPC/villager11/villagers-ezgif.com-crop (11)-1.png" id="2_aox5c"]
+[ext_resource type="Texture2D" uid="uid://bnlti05ad0afy" path="res://villagersNPC/villager11/villagers-ezgif.com-crop (11)-2.png" id="3_rwpsh"]
+[ext_resource type="Texture2D" uid="uid://btp765m1akreb" path="res://villagersNPC/villager11/villagers-ezgif.com-crop (11)-4.png" id="4_ujjj7"]
+[ext_resource type="Texture2D" uid="uid://cmyw7fmkbaox3" path="res://monochrome_tilemap_transparent.png" id="5_vipiq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wlsll"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8xhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nknwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_aox5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rwpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ujjj7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="villager11" type="Area2D"]
+script = ExtResource("1_liw4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wlsll")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.37, 0.37)
+sprite_frames = SubResource("SpriteFrames_n8xhu")
+autoplay = "default"
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -60)
+scale = Vector2(0.328909, 0.193215)
+texture = ExtResource("5_vipiq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

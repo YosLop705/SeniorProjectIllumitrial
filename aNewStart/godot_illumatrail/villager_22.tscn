@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckj20qh8psgdu"]
+
+[ext_resource type="Texture2D" uid="uid://bve2fxq4j76ol" path="res://villagersNPC/ballSpeech.png" id="1_wwqu3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oalft"]
+radius = 22.2036
+
+[node name="villager22" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oalft")
+
+[node name="BallSpeech" type="Sprite2D" parent="."]
+position = Vector2(73, -53)
+scale = Vector2(0.556265, 0.50875)
+texture = ExtResource("1_wwqu3")

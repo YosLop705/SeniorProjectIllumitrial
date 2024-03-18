@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://6py7wm3t2qgf"]
+
+[ext_resource type="Script" path="res://BossMusic.gd" id="1_2pe5u"]
+[ext_resource type="AudioStream" uid="uid://bq5hmp0ibxqh" path="res://splintersM.mp3" id="2_80s8y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r73x1"]
+size = Vector2(4302.16, 789.75)
+
+[node name="BossMusic" type="Area2D"]
+script = ExtResource("1_2pe5u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 2)
+shape = SubResource("RectangleShape2D_r73x1")
+
+[node name="splinters" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_80s8y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

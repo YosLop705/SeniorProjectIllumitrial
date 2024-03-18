@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://dypev0qrj3e6s"]
+
+[ext_resource type="Script" path="res://gem.gd" id="1_606fa"]
+[ext_resource type="Texture2D" uid="uid://bg1u7rudq2qfx" path="res://orbal/orb3-1.png.png" id="2_3quay"]
+[ext_resource type="Texture2D" uid="uid://dveyq4ttc88cl" path="res://orbal/orb3-2.png.png" id="3_jnvbo"]
+[ext_resource type="Texture2D" uid="uid://dfn60vfme31n4" path="res://orbal/orb3-3.png.png" id="4_q67p1"]
+[ext_resource type="Texture2D" uid="uid://cesajcroddbne" path="res://orbal/orb3-4.png.png" id="5_r43hn"]
+[ext_resource type="Texture2D" uid="uid://cg2a1a03qdx2m" path="res://orbal/orb3-5.png.png" id="6_tex08"]
+[ext_resource type="AudioStream" uid="uid://bqxjld1pkjhby" path="res://collect.mp3" id="7_6alqw"]
+[ext_resource type="Script" path="res://GemL.gd" id="8_jxkks"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhs42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3quay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jnvbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q67p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r43hn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tex08")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_341ky"]
+size = Vector2(17, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iawjc"]
+radius = 5.0
+
+[node name="Gem" type="Area2D"]
+script = ExtResource("1_606fa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 7)
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_bhs42")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_341ky")
+
+[node name="CollectedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6alqw")
+
+[node name="GemL" type="CharacterBody2D" parent="."]
+light_mask = 0
+collision_layer = 2
+collision_mask = 0
+floor_block_on_wall = false
+platform_floor_layers = 4294967292
+script = ExtResource("8_jxkks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GemL"]
+light_mask = 0
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_iawjc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CollectedSfx" to="." method="_on_collected_sfx_finished"]
